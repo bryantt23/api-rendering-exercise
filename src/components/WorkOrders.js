@@ -9,7 +9,13 @@ function WorkOrders({ orders, workers }) {
       ) : (
         <div className='container'>
           {orders.map(order => {
-            return <WorkOrder key={order.id} order={order} workers={workers} />;
+            return (
+              <WorkOrder
+                key={order.id}
+                order={order}
+                worker={workers[order.workerId]}
+              />
+            );
           })}
         </div>
       )}

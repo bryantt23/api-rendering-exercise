@@ -2,7 +2,7 @@ import React from 'react';
 import WorkerInfo from './WorkerInfo';
 
 function WorkOrder(props) {
-  const { order, workers } = props;
+  const { order, worker } = props;
   const dt = new Date(order.deadline);
 
   //   https://stackoverflow.com/questions/1056728/where-can-i-find-documentation-on-formatting-a-date-in-javascript
@@ -28,7 +28,7 @@ function WorkOrder(props) {
 
       <h3>Work Description: {order.description}</h3>
 
-      <WorkerInfo workerInfo={workers[order.workerId]} />
+      <WorkerInfo workerInfo={worker} />
 
       <p className='due-date'>Due Date: {dateDisplay}</p>
     </div>
