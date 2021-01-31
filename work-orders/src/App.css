@@ -12,6 +12,7 @@
   margin: 5px;
   padding: 5px;
   border-width: 2px;
+  display: inline-block;
 }
 
 .due-date {
