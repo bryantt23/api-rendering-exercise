@@ -2,6 +2,8 @@ import React from 'react';
 
 function WorkerInfo(props) {
   const { workerInfo } = props;
+  if (!workerInfo) return 'No Info';
+
   return (
     <div>
       {/* WorkerInfo {JSON.stringify(workerInfo)} */}
