@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/api-rendering-exercise/static/css/main.d5cfc5ff.chunk.css",
+    "main.js": "/api-rendering-exercise/static/js/main.3f5017a3.chunk.js",
+    "main.js.map": "/api-rendering-exercise/static/js/main.3f5017a3.chunk.js.map",
+    "runtime-main.js": "/api-rendering-exercise/static/js/runtime-main.9b4051ce.js",
+    "runtime-main.js.map": "/api-rendering-exercise/static/js/runtime-main.9b4051ce.js.map",
+    "static/js/2.b75c0bdd.chunk.js": "/api-rendering-exercise/static/js/2.b75c0bdd.chunk.js",
+    "static/js/2.b75c0bdd.chunk.js.map": "/api-rendering-exercise/static/js/2.b75c0bdd.chunk.js.map",
+    "static/js/3.21f7438f.chunk.js": "/api-rendering-exercise/static/js/3.21f7438f.chunk.js",
+    "static/js/3.21f7438f.chunk.js.map": "/api-rendering-exercise/static/js/3.21f7438f.chunk.js.map",
+    "index.html": "/api-rendering-exercise/index.html",
+    "static/css/main.d5cfc5ff.chunk.css.map": "/api-rendering-exercise/static/css/main.d5cfc5ff.chunk.css.map",
+    "static/js/2.b75c0bdd.chunk.js.LICENSE.txt": "/api-rendering-exercise/static/js/2.b75c0bdd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9b4051ce.js",
+    "static/js/2.b75c0bdd.chunk.js",
+    "static/css/main.d5cfc5ff.chunk.css",
+    "static/js/main.3f5017a3.chunk.js"
+  ]
+}
