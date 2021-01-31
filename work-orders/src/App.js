@@ -1,6 +1,7 @@
 import './App.css';
 import WorkOrders from './components/WorkOrders';
 import WorkerSearch from './components/WorkerSearch';
+import ToggleButton from './components/ToggleButton';
 import React, { useState, useEffect } from 'react';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   const [workers, setWorkers] = useState({});
   const [orders, setOrders] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
+  const [earliestFirst, setEarliestFirst] = useState(true);
 
   async function getOrders() {
     const res = await fetch(workOrdersApi);
@@ -52,10 +54,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(workerSearch);
-
     if (workerSearch) {
-      console.log(workers);
       let validWorkers = [];
       for (let prop in workers) {
         if (
@@ -64,24 +63,29 @@ function App() {
           validWorkers.push(workers[prop].id);
         }
       }
-      console.log(validWorkers);
 
       const filteredOrders = orders.filter(order =>
         validWorkers.includes(order.workerId)
       );
-      // const workersFilter=
 
-      // const filteredOrders = orders.filter(order =>
-      //   order.name.toLowerCase().includes(workerSearch.toLowerCase())
-      // );
       setFilteredOrders(filteredOrders);
     } else {
       setFilteredOrders(orders);
     }
   }, [workerSearch, orders]);
 
+  useEffect(() => {
+    console.log(earliestFirst);
+  }, [earliestFirst]);
+
   return (
     <div className='App'>
+      <ToggleButton
+        earliestFirst={earliestFirst}
+        toggleSelected={() => {
+          setEarliestFirst(!earliestFirst);
+        }}
+      />
       <WorkerSearch setWorkerSearch={setWorkerSearch} />
       <WorkOrders
         workerSearch={workerSearch}
