@@ -1,4 +1,5 @@
 import React from 'react';
+import WorkerInfo from './WorkerInfo';
 
 function WorkOrder(props) {
   const { order, workers } = props;
@@ -25,11 +26,12 @@ function WorkOrder(props) {
     <div>
       <h1>{order.name}</h1>
 
-      <p>Work Description: {order.description}</p>
+      <h3>Work Description: {order.description}</h3>
 
-      {JSON.stringify(order)}
-
-      <h3>User Info {JSON.stringify(workers)}</h3>
+      {/* {JSON.stringify(order)}
+{JSON.stringify(workers)} */}
+      {/* <h3>User Info </h3> */}
+      <WorkerInfo workerInfo={workers[order.workerId]} />
 
       <p>Due Date: {dateDisplay}</p>
     </div>
