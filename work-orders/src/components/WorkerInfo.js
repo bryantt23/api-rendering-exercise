@@ -6,7 +6,6 @@ function WorkerInfo(props) {
 
   return (
     <div>
-      {/* WorkerInfo {JSON.stringify(workerInfo)} */}
       <img src={workerInfo.image} style={{ borderRadius: 1000, height: 150 }} />
       <p>Name: {workerInfo.name}</p>
       <p>Company Name: {workerInfo.companyName}</p>

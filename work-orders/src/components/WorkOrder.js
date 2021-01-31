@@ -28,9 +28,6 @@ function WorkOrder(props) {
 
       <h3>Work Description: {order.description}</h3>
 
-      {/* {JSON.stringify(order)}
-{JSON.stringify(workers)} */}
-      {/* <h3>User Info </h3> */}
       <WorkerInfo workerInfo={workers[order.workerId]} />
 
       <p>Due Date: {dateDisplay}</p>
