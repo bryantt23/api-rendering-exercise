@@ -1,0 +1,18 @@
+img {
+  border-radius: 1000px;
+  height: 100px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  width: 40%;
+}
+
+.right {
+  width: 60%;
+  text-align: left;
+}

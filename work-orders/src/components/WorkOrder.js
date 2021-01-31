@@ -24,13 +24,13 @@ function WorkOrder(props) {
 
   return (
     <div className='work-order'>
-      <h1>{order.name}</h1>
+      <h2>{order.name}</h2>
 
       <h3>Work Description: {order.description}</h3>
 
       <WorkerInfo workerInfo={workers[order.workerId]} />
 
-      <p>Due Date: {dateDisplay}</p>
+      <p className='due-date'>Due Date: {dateDisplay}</p>
     </div>
   );
 }

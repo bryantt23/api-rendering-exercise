@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 25px;
 }
 
 .container {
@@ -7,5 +8,13 @@
 }
 
 .work-order {
-  background-color: gold;
+  background-color: rgba(211, 211, 211, 0.966);
+  margin: 5px;
+  padding: 5px;
+  border-width: 2px;
+}
+
+.due-date {
+  text-align: right;
+  margin-right: 5px;
 }
