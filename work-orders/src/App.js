@@ -54,6 +54,11 @@ function App() {
   }
 
   useEffect(() => {
+    let ordersByTime = orders.sort((a, b) => a.deadline - b.deadline);
+    if (!earliestFirst) {
+      ordersByTime = orders.reverse();
+    }
+
     if (workerSearch) {
       let validWorkers = [];
       for (let prop in workers) {
@@ -64,19 +69,15 @@ function App() {
         }
       }
 
-      const filteredOrders = orders.filter(order =>
+      const filteredOrders = ordersByTime.filter(order =>
         validWorkers.includes(order.workerId)
       );
 
       setFilteredOrders(filteredOrders);
     } else {
-      setFilteredOrders(orders);
+      setFilteredOrders(ordersByTime);
     }
-  }, [workerSearch, orders]);
-
-  useEffect(() => {
-    console.log(earliestFirst);
-  }, [earliestFirst]);
+  }, [workerSearch, orders, earliestFirst]);
 
   return (
     <div className='App'>
