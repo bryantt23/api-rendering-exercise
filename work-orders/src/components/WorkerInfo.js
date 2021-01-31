@@ -1,7 +1,16 @@
 import React from 'react';
 
 function WorkerInfo(props) {
-  return <div>WorkerInfo {JSON.stringify(props)}</div>;
+  const { workerInfo } = props;
+  return (
+    <div>
+      {/* WorkerInfo {JSON.stringify(workerInfo)} */}
+      <img src={workerInfo.image} style={{ borderRadius: 1000, height: 150 }} />
+      <p>Name: {workerInfo.name}</p>
+      <p>Company Name: {workerInfo.companyName}</p>
+      <p>Email: {workerInfo.email}</p>
+    </div>
+  );
 }
 
 export default WorkerInfo;
