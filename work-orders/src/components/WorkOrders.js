@@ -11,15 +11,9 @@ function WorkOrders() {
   const fetchUserInfo = async () => {
     const requests = orders.map(async order => {
       const url = workWorkersApi + order.workerId;
-      // console.log('url', url);
       const data = await fetch(url);
       const res = await data.json();
-      console.log(res);
       return res;
-      // return fetch(url) // Async function that fetches the user info.
-      //   .then(a => {
-      //     return a; // Returns the user info.
-      //   });
     });
     return Promise.all(requests); // Waiting for all the requests to get resolved.
   };
@@ -27,14 +21,25 @@ function WorkOrders() {
   async function getWorkers() {
     let workerMap = {};
     const info = await fetchUserInfo();
-    info.forEach(async res => {
-      const data = await res;
+
+    // https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop
+    for await (const data of info) {
       console.log('data', data);
       let { worker } = data;
       console.log(worker);
       workerMap[worker.id] = worker;
       console.log(workerMap);
-    });
+    }
+
+    console.log('workerMap', workerMap);
+    // info.forEach(async res => {
+    //   const data = await res;
+    //   console.log('data', data);
+    //   let { worker } = data;
+    //   console.log(worker);
+    //   workerMap[worker.id] = worker;
+    //   console.log(workerMap);
+    // });
     // console.log(JSON.stringify(info));
   }
 
