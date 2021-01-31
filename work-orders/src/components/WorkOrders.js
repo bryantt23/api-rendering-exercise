@@ -81,7 +81,7 @@ function WorkOrders() {
         <div>
           {orders.map(order => {
             console.log(order);
-            return <WorkOrder key={order.id} order={order} />;
+            return <WorkOrder key={order.id} order={order} userMap={userMap} />;
           })}
         </div>
       )}
