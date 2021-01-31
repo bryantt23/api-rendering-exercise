@@ -21,9 +21,9 @@ function WorkOrder(props) {
     .getMinutes()
     .toString()
     .padStart(2, '0')}:${dt.getSeconds().toString().padStart(2, '0')}`;
-  console.log(props);
+
   return (
-    <div>
+    <div className='work-order'>
       <h1>{order.name}</h1>
 
       <h3>Work Description: {order.description}</h3>

@@ -7,9 +7,8 @@ function WorkOrders({ orders, workers }) {
       {orders.length === 0 ? (
         'No orders'
       ) : (
-        <div>
+        <div className='container'>
           {orders.map(order => {
-            console.log(order);
             return <WorkOrder key={order.id} order={order} workers={workers} />;
           })}
         </div>
