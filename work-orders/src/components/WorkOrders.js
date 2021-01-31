@@ -5,9 +5,37 @@ function WorkOrders() {
   const workWorkersApi = 'https://api.hatchways.io/assessment/workers/';
 
   const [orders, setOrders] = useState([]);
+  const [worker, setWorkers] = useState({});
 
-  function getWorkers() {
-    console.log(orders);
+  // Iterates all users and returns their Github info.
+  const fetchUserInfo = async () => {
+    const requests = orders.map(async order => {
+      const url = workWorkersApi + order.workerId;
+      // console.log('url', url);
+      const data = await fetch(url);
+      const res = await data.json();
+      console.log(res);
+      return res;
+      // return fetch(url) // Async function that fetches the user info.
+      //   .then(a => {
+      //     return a; // Returns the user info.
+      //   });
+    });
+    return Promise.all(requests); // Waiting for all the requests to get resolved.
+  };
+
+  async function getWorkers() {
+    let workerMap = {};
+    const info = await fetchUserInfo();
+    info.forEach(async res => {
+      const data = await res;
+      console.log('data', data);
+      let { worker } = data;
+      console.log(worker);
+      workerMap[worker.id] = worker;
+      console.log(workerMap);
+    });
+    // console.log(JSON.stringify(info));
   }
 
   async function getOrders() {
