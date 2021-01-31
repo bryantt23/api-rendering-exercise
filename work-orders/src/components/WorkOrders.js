@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import WorkOrder from './WorkOrder';
 
 function WorkOrders() {
   const workOrdersApi = 'https://api.hatchways.io/assessment/work_orders';
   const workWorkersApi = 'https://api.hatchways.io/assessment/workers/';
 
   const [orders, setOrders] = useState([]);
-  const [worker, setWorkers] = useState({});
+  const [workers, setWorkers] = useState({});
 
   // Iterates all users and returns their Github info.
   const fetchUserInfo = async () => {
@@ -31,16 +32,8 @@ function WorkOrders() {
       console.log(workerMap);
     }
 
-    console.log('workerMap', workerMap);
-    // info.forEach(async res => {
-    //   const data = await res;
-    //   console.log('data', data);
-    //   let { worker } = data;
-    //   console.log(worker);
-    //   workerMap[worker.id] = worker;
-    //   console.log(workerMap);
-    // });
-    // console.log(JSON.stringify(info));
+    // console.log('workerMap', workerMap);
+    setWorkers(workerMap);
   }
 
   async function getOrders() {
@@ -49,7 +42,8 @@ function WorkOrders() {
     // console.log(res.json());
     // console.log(JSON.stringify(data));
     // setOrders(JSON.stringify(data));
-    console.log(data);
+    console.log(typeof data.orders);
+    console.log(data.orders);
     setOrders(data.orders);
   }
 
@@ -61,17 +55,36 @@ function WorkOrders() {
     getWorkers();
   }, [orders]);
 
+  /* <div>
+      {JSON.stringify(orders)}
+
+      {orders.length === 0 ? (
+        'No orders'
+      ) : (
+        <div>
+          {' '}
+          {orders.map(order => {
+            console.log(order);
+            return <WorkOrder key={order.id} />;
+          })}
+        </div>
+      )}
+    </div> */
+
   return (
     <div>
-      {orders.length === 0
-        ? 'No orders'
-        : orders.map(order => {
-            return (
-              <p>
-                {order.name} {JSON.stringify(order)}
-              </p>
-            );
+      {/* {JSON.stringify(orders)} */}
+
+      {orders.length === 0 ? (
+        'No orders'
+      ) : (
+        <div>
+          {orders.map(order => {
+            console.log(order);
+            return <WorkOrder key={order.id} order={order} />;
           })}
+        </div>
+      )}
     </div>
   );
 }
