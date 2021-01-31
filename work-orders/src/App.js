@@ -10,6 +10,7 @@ function App() {
   const [workerSearch, setWorkerSearch] = useState('');
   const [workers, setWorkers] = useState({});
   const [orders, setOrders] = useState([]);
+  const [filteredOrders, setFilteredOrders] = useState([]);
 
   async function getOrders() {
     const res = await fetch(workOrdersApi);
@@ -52,14 +53,39 @@ function App() {
 
   useEffect(() => {
     console.log(workerSearch);
-  }, [workerSearch]);
+
+    if (workerSearch) {
+      console.log(workers);
+      let validWorkers = [];
+      for (let prop in workers) {
+        if (
+          workers[prop].name.toLowerCase().includes(workerSearch.toLowerCase())
+        ) {
+          validWorkers.push(workers[prop].id);
+        }
+      }
+      console.log(validWorkers);
+
+      const filteredOrders = orders.filter(order =>
+        validWorkers.includes(order.workerId)
+      );
+      // const workersFilter=
+
+      // const filteredOrders = orders.filter(order =>
+      //   order.name.toLowerCase().includes(workerSearch.toLowerCase())
+      // );
+      setFilteredOrders(filteredOrders);
+    } else {
+      setFilteredOrders(orders);
+    }
+  }, [workerSearch, orders]);
 
   return (
     <div className='App'>
       <WorkerSearch setWorkerSearch={setWorkerSearch} />
       <WorkOrders
         workerSearch={workerSearch}
-        orders={orders}
+        orders={filteredOrders}
         workers={workers}
       />
     </div>
