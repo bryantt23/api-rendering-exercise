@@ -6,7 +6,11 @@ function ToggleButton({ toggleSelected, earliestFirst }) {
   return (
     <div>
       Earliest First?
-      <div className='toggle-container' onClick={toggleSelected}>
+      <div
+        className='toggle-container'
+        onClick={toggleSelected}
+        id='deadline-input'
+      >
         <div className={`dialog-button ${earliestFirst ? '' : 'disabled'}`}>
           {earliestFirst ? 'YES' : 'NO'}
         </div>
